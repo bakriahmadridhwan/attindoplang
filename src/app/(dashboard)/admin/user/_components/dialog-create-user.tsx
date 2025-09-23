@@ -1,6 +1,6 @@
 import {
   INITIAL_CREATE_USER_FORM,
-  INITIAL_STATE_CREATE_USER
+  INITIAL_STATE_CREATE_USER,
 } from '@/constants/auth-constant';
 import { Preview } from '@/types/general';
 import {
