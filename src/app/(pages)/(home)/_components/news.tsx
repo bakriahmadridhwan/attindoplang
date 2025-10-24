@@ -64,11 +64,8 @@ const NewsComponent = ({
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {news.map((item) => (
-              <div>
-                <div
-                  key={item.id}
-                  className="aspect-square w-full overflow-hidden rounded-xl cursor-pointer"
-                >
+              <div key={item.id}>
+                <div className="aspect-square w-full overflow-hidden rounded-xl cursor-pointer">
                   <Image
                     src={item.image_url}
                     alt={item.title || "Berita"}

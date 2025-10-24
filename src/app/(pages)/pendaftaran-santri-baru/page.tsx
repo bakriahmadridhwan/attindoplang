@@ -1,9 +1,11 @@
 import FormStudent from "./_components/form-student";
 
-export const metadata = {
-  title: 'AT-TIN - Pendaftaran Santri Baru',
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Pendaftaran Santri Baru | Pondok Pesantren AT-TIN",
 };
 
 export default function PendaftaranSantriBaruPage() {
-  return <FormStudent />
+  return <FormStudent />;
 }
