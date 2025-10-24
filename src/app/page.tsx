@@ -1,18 +1,13 @@
-'use client';
-import { Button } from '@/components/ui/button';
-import { useAuthStore } from '@/stores/auth-store';
-import Link from 'next/link';
+import { DarkmodeToggle } from '@/components/common/darkmode-toggle';
+import Home from './(pages)/(home)/page';
 
-export default function Home() {
-  const profile = useAuthStore((state) => state.profile);
+export const metadata = {
+  title: "AT-TIN | Halaman Utama",
+  description: "Website Resmi Pondok Pesantren AT-TIN Doplang Purworejo",
+}
+
+export default function Root() {
   return (
-    <div className="bg-muted flex justify-center items-center h-screen flex-col space-y-4">
-      <h1 className="text-4xl font-semibold">Welcome {profile.name}</h1>
-      <Link href={profile.role === 'admin' ? '/admin' : '/order'}>
-        <Button className="bg-teal-500 text-white hover:bg-teal-600">
-          Access Dashboard
-        </Button>
-      </Link>
-    </div>
+    <Home />
   );
 }

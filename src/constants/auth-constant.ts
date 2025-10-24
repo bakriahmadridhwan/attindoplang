@@ -62,6 +62,15 @@ export const ROLE_LIST = [
     value: 'cashier',
     label: 'Cashier',
   },
+  {
+    value: 'attin',
+    label: 'ATTIN',
+  },
+  {
+    value: 'avbc',
+    label: 'AVBC',
+  },
+
 ];
 
 export const AVAILABILITY_LIST = [

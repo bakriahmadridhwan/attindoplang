@@ -5,6 +5,9 @@ import { Toaster } from '@/components/ui/sonner';
 import AuthStoreProvider from '@/providers/auth-store-provider';
 import { cookies } from 'next/headers';
 import ReactQueryProvider from '@/providers/react-query-provider';
+import { BannerComponent } from './(pages)/(home)/_components/banner';
+import NavRelative from './(pages)/(home)/_components/nav';
+import { FooterComponent } from './(pages)/(home)/_components/footer';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -26,7 +29,7 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased debug-screens`}
       >
         <ReactQueryProvider>
           <AuthStoreProvider profile={profile}>
@@ -36,8 +39,13 @@ export default async function RootLayout({
               enableSystem
               disableTransitionOnChange
             >
-              {children}
-              <Toaster />
+              <BannerComponent />
+              <div className='relative w-full'>
+                <NavRelative />
+                {children}
+                <Toaster />
+              </div>
+              <FooterComponent />
             </ThemeProvider>
           </AuthStoreProvider>
         </ReactQueryProvider>
