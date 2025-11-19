@@ -65,11 +65,11 @@ export default function StudentManagement() {
     if (!open) setSelectedAction(null);
   };
 
-  const handleExportExcel = async () => {
-    try {
-      
-    }
-  }
+  // const handleExportExcel = async () => {
+  //   try {
+
+  //   }
+  // }
 
   const filteredData = useMemo(() => {
     return (students?.data || []).map((student: Student, index) => {
