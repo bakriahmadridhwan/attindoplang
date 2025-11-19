@@ -39,7 +39,7 @@ export default function NavRelative() {
     "/register",
     "/pendaftaran-santri-baru",
     "/pendataan-alumni",
-  ]
+  ];
 
   if (isAdmin || disableNavbar.includes(pathname)) {
     return null;
@@ -51,7 +51,13 @@ export default function NavRelative() {
         <NavbarLogo />
         <NavItems items={navItems} />
         <div className="flex items-center gap-4">
-          <NavbarButton variant="primary" href="/pendaftaran-santri-baru" className="bg-[#129915] text-white">PENDAFTARAN SANTRI</NavbarButton>
+          <NavbarButton
+            variant="primary"
+            href="/pendaftaran-santri-baru"
+            className="bg-[#129915] text-white"
+          >
+            PENDAFTARAN SANTRI
+          </NavbarButton>
           <div className="z-10">
             <DarkmodeToggle />
           </div>
@@ -105,5 +111,5 @@ export default function NavRelative() {
         </MobileNavMenu>
       </MobileNav>
     </Navbar>
-  )
+  );
 }

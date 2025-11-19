@@ -1,19 +1,20 @@
-'use client';
+"use client";
 
-import DataTable from '@/components/common/data-table';
-import DropdownAction from '@/components/common/dropdown-action';
-import { Button } from '@/components/ui/button';
-import { Dialog, DialogTrigger } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
-import { HEADER_TABLE_STUDENT } from '@/constants/student-constant';
-import useDataTable from '@/hooks/use-data-table';
-import { createClient } from '@/lib/supabase/client';
-import { Student } from '@/validations/student-validation';
-import { useQuery } from '@tanstack/react-query';
-import { Pencil, Trash2 } from 'lucide-react';
-import Image from 'next/image';
-import { useMemo, useState } from 'react';
-import { toast } from 'sonner';
+import DataTable from "@/components/common/data-table";
+import DropdownAction from "@/components/common/dropdown-action";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { HEADER_TABLE_STUDENT } from "@/constants/student-constant";
+import useDataTable from "@/hooks/use-data-table";
+import { createClient } from "@/lib/supabase/client";
+import { Student } from "@/validations/student-validation";
+import { useQuery } from "@tanstack/react-query";
+import { Pencil, Trash2 } from "lucide-react";
+import Image from "next/image";
+import { useMemo, useState } from "react";
+import { toast } from "sonner";
+import * as XLXS from "xlsx";
 
 export default function StudentManagement() {
   const supabase = createClient();
@@ -30,24 +31,24 @@ export default function StudentManagement() {
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ['students', currentPage, currentLimit, currentSearch],
+    queryKey: ["students", currentPage, currentLimit, currentSearch],
     queryFn: async () => {
       const query = supabase
-        .from('students')
-        .select('*', { count: 'exact' })
+        .from("students")
+        .select("*", { count: "exact" })
         .range((currentPage - 1) * currentLimit, currentPage * currentLimit - 1)
-        .order('created_at');
+        .order("created_at");
 
       if (currentSearch) {
         query.or(
-          `name.ilike.%${currentSearch}%,address.ilike.%${currentSearch}%,origin_school.ilike.%${currentSearch}%,companion_name.ilike.%${currentSearch}%`,
+          `name.ilike.%${currentSearch}%,address.ilike.%${currentSearch}%,origin_school.ilike.%${currentSearch}%,companion_name.ilike.%${currentSearch}%`
         );
       }
 
       const result = await query;
 
       if (result.error)
-        toast.error('Get Student data failed', {
+        toast.error("Get Student data failed", {
           description: result.error.message,
         });
 
@@ -57,12 +58,18 @@ export default function StudentManagement() {
 
   const [selectedAction, setSelectedAction] = useState<{
     data: Student;
-    type: 'ubah' | 'hapus';
+    type: "ubah" | "hapus";
   } | null>(null);
 
   const handleChangeAction = (open: boolean) => {
     if (!open) setSelectedAction(null);
   };
+
+  const handleExportExcel = async () => {
+    try {
+      
+    }
+  }
 
   const filteredData = useMemo(() => {
     return (students?.data || []).map((student: Student, index) => {
@@ -102,7 +109,7 @@ export default function StudentManagement() {
               action: () => {
                 setSelectedAction({
                   data: student,
-                  type: 'ubah',
+                  type: "ubah",
                 });
               },
             },
@@ -113,11 +120,11 @@ export default function StudentManagement() {
                   Hapus
                 </span>
               ),
-              variant: 'destructive',
+              variant: "destructive",
               action: () => {
                 setSelectedAction({
                   data: student,
-                  type: 'hapus',
+                  type: "hapus",
                 });
               },
             },
@@ -136,7 +143,7 @@ export default function StudentManagement() {
   return (
     <div className="w-full">
       <div className="flex flex-col lg:flex-row mb-4 gap-2 justify-between w-full">
-        <h1 className="text-2xl font-bold">Pengelolaan Santri</h1>
+        <h1 className="text-2xl font-bold">Pengelolaan Data Santri</h1>
         <div className="flex gap-2">
           <Input
             placeholder="Cari..."

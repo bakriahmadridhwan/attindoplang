@@ -71,7 +71,7 @@ const defaultSections = [
       { name: "Alumni", href: "/alumni" },
       { name: "Produk", href: "/produk" },
       { name: "Media", href: "/media" },
-      { name: "Kontak", href: "/kontak" },
+      { name: "Kontak", href: "#contact" },
     ],
   },
 ];
@@ -126,7 +126,6 @@ const FooterComponent = ({
   copyright = "© 2025 AT-TIN Doplang Purworejo. All rights reserved.",
   legalLinks = defaultLegalLinks,
 }: FooterProps) => {
-
   const pathname = usePathname();
   const isAdmin = pathname.startsWith("/admin");
   const disableFooter = [
@@ -134,7 +133,7 @@ const FooterComponent = ({
     "/register",
     "/pendaftaran-santri-baru",
     "/pendataan-alumni",
-  ]
+  ];
 
   if (isAdmin || disableFooter.includes(pathname)) {
     return null;

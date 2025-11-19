@@ -20,10 +20,16 @@ const ContactComponent = ({
   phone = "(123) 34567890",
   whatsapp = "(123) 34567890",
   email = "email@example.com",
-  web = { label: "attindoplang.vercel.app", url: "https://attindoplang.vercel.app" },
+  web = {
+    label: "attindoplang.vercel.app",
+    url: "https://attindoplang.vercel.app",
+  },
 }: ContactProps) => {
   return (
-    <section className="px-4 pt-10 lg:pt-20 container mx-auto xl:px-0 2xl:px-[136px]">
+    <section
+      id="contact"
+      className="px-4 pt-10 lg:pt-20 container mx-auto xl:px-0 2xl:px-[136px]"
+    >
       <div className="container mx-auto">
         <div className="mx-auto flex flex-col justify-between gap-10 lg:flex-row lg:gap-20">
           <div className="mx-auto flex flex-col justify-between gap-10">
@@ -58,7 +64,11 @@ const ContactComponent = ({
             </div>
           </div>
           <div>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.680676474598!2d109.99203647577026!3d-7.717370192300612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7aebd1ac7442bf%3A0x4f8d00e1e4dbec05!2sPONDOK%20PESANTREN%20AT-TIN%20DOPLANG!5e0!3m2!1sen!2sid!4v1759687143513!5m2!1sen!2sid" loading="lazy" className="w-full md:w-[500px] h-[350px] md:h-[450px]"></iframe>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.680676474598!2d109.99203647577026!3d-7.717370192300612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7aebd1ac7442bf%3A0x4f8d00e1e4dbec05!2sPONDOK%20PESANTREN%20AT-TIN%20DOPLANG!5e0!3m2!1sen!2sid!4v1759687143513!5m2!1sen!2sid"
+              loading="lazy"
+              className="w-full md:w-[500px] h-[350px] md:h-[450px]"
+            ></iframe>
           </div>
         </div>
       </div>
